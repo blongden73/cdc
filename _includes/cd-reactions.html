@@ -1,0 +1,30 @@
+{%- capture reactions -%}
+  {{ include.reaction-one }},{{include.reaction-two }},{{include.reaction-three }}
+{%- endcapture -%}
+{% assign reactionsList = reactions | split: ',' %}
+
+<div class="cd__reactions flex">
+  {% for reaction in reactionsList %}
+    {% assign cleanReactions = reaction | slugify %}
+    <div class="cd__reaction cd__reaction-{{cleanReactions}}">
+      {% if cleanReactions == 'call-me' %}
+        {% include emoji-call-me.html %}
+      {% endif %}
+      {% if cleanReactions == 'wave' %}
+        {% include emoji-wave.html %}
+      {% endif %}
+      {% if cleanReactions == 'claps' %}
+        {% include emoji-claps.html %}
+      {% endif %}
+      {% if cleanReactions == 'thumb' %}
+        {% include emoji-thumb.html %}
+      {% endif %}
+      {% if cleanReactions == 'point' %}
+        {% include emoji-point.html %}
+      {% endif %}
+      {% if cleanReactions == 'praise' %}
+        {% include emoji-praise.html %}
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>

@@ -1,0 +1,84 @@
+<header {% if page.Colours %}class="header--{{page.Colours}}" {% endif %}>
+  <div class="header--wrapper">
+    <div class="header--logo">
+      <a data-tooltip="Cord Home" class="tooltip-hover" href="https://cord.com/">
+        {% include logo.html %}
+      </a>
+    </div>
+  </div>
+  {% unless page.layout == "playground" %}
+    {% assign navigation = site.navigation %}
+    <nav class="header--nav">
+      <ul>
+        {% for item in navigation %}
+          <li {% if item.Sub-menu %} class="submenu--item" {% endif %}>
+            {% unless item.Sub-menu %}<a class="window__link" href="{{item.Link}}"></a>{% endunless %}
+            <span>{{item.title}} {% if item.Sub-menu %}{% include cheveron.html %} {% endif %}</span>
+            {% if item.Sub-menu %}
+            {% assign subMenuItems = item.Sub-menu %}
+              <ul class="header__nav-sub">
+                {% for items in subMenuItems %}
+                <li><a target="_blank" href="{{items.Link}}">{{ items.Title }}</a></li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </li>
+        {% endfor %}
+        <li class="veggie--burger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </li>
+      </ul>
+    </nav>
+  {% endunless %}
+  {% if page.layout == "playground" %}
+    <nav class="playground--nav">
+      <ul>
+        <li>
+          <cord-presence-facepile
+          context='{ "page": "playground" }'
+          ></cord-presence-facepile>
+        </li>
+        <span data-tooltip="Open Comments" class="tooltip-hover"><li>
+          <cord-sidebar-launcher
+            label=""
+            icon-url="https://docs.cord.com/uploads/Comment-icon.svg"
+          ></cord-sidebar-launcher>
+        </li></span>
+        <span data-tooltip="Updated just now" class="tooltip-hover"><li>{% include clock-icon.html %}</li></span>
+        <span data-tooltip="Thanks for the love" class="tooltip-hover star-icon"><li>{% include star-icon.html %}</li></span>
+        <span class="playground-overflow">
+          <li>
+            {% include elipses-icon.html %}
+            <ul class="playground-flyout">
+              <li><a href="/">Docs</a></li>
+              <li><a href="/collaboration-guides/">Guides</a></li>
+              <li><a href="https://cord.com/features">Features</a></li>
+              <li><a href="https://cord.com/about">About</a></li>
+            </ul>
+          </li>
+        </span>
+      </ul>
+    </nav>
+  {% endif %}
+</header>
+<div class="mobile--nav">
+  <ul>
+    {% for item in navigation %}
+      <li {% if item.Sub-menu %} class="submenu--item" {% endif %}>
+        {% unless item.Sub-menu %}<a class="window__link" href="{{item.Link}}"></a>{% endunless %}
+        <span>{{item.title}} {% if item.Sub-menu %}{% include cheveron.html %} {% endif %}</span>
+        {% if item.Sub-menu %}
+        {% assign subMenuItems = item.Sub-menu %}
+          <ul class="header__nav-sub">
+            {% for items in subMenuItems %}
+            <li><a target="_blank" href="{{items.Link}}">{{ items.Title }}</a></li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+<div class="toast">Link copied to pasteboard!</div>

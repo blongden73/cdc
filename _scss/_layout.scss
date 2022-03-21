@@ -1,0 +1,25 @@
+//reactions
+.cd__reaction {
+  border: 1px solid #000;
+  border-radius: calc(#{$radius-large});
+  padding-top: 11px;
+  padding-left: calc(#{$spacer}*4);
+  padding-right: calc(#{$spacer}*4);
+}
+
+.cd__image-text {
+  background-color: $greyRams;
+  padding-top: calc(#{$spacer}*4);
+  padding-bottom: calc(#{$spacer}*4);
+
+  .cd__image-left {
+    width: 50%;
+  }
+
+  .cd__text-right {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+  }
+}

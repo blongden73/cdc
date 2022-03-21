@@ -1,0 +1,19 @@
+<section class="cd__title-text">
+  <div class="cd__max-width">
+    <div class="cd__drop-layout">
+      {% if include.line-one %}
+        <h1 class="drop-large">{{ include.line-one }}</h1>
+      {% endif %}
+      {% if include.line-two %}
+        <div class="cd__second-line flex">
+          <h1 class="drop-large">{{ include.line-two }}</h1>
+          {% if include.reaction-one %}
+            {% include cd-reactions.html %}
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+    <div class="cd__introduction">
+      <p class="p-large">{{ include.description }}</p></div>
+  </div>
+</section>

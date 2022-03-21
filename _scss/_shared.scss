@@ -1,0 +1,483 @@
+html {
+  font-size: 2vw;
+  font-family: 'abc_favoritbook';
+  scroll-behavior: smooth;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+//Spacing
+$spacer: 8px;
+
+//Offset
+$offset: 96px;
+$codeOffset: 122px;
+$guideSectionMarginBottom: calc(#{$spacer} * 9);
+
+//Width
+
+$max-width: 1300px;
+
+//border-radius
+$radius-large: 80px;
+
+//Droplet Styling
+
+.cd__drop-layout {
+  display: flex;
+  flex-direction: column;
+}
+
+.drop-large {
+  border: 1px solid #000;
+  border-top-right-radius: $radius-large;
+  border-bottom-right-radius: $radius-large;
+  border-top-left-radius: $radius-large;
+  display: inline-block;
+  margin-top: -1px;
+  padding: calc(#{$spacer}) calc(#{$spacer} * 4);
+  width: max-content;
+}
+
+.droplet {
+  border: 1px solid #000;
+  border-top-right-radius: $radius-large;
+  border-bottom-right-radius: $radius-large;
+  border-top-left-radius: $radius-large;
+  display: inline-block;
+  margin-top: -1px;
+  padding: 0 calc(#{$spacer} * 2);
+  width: max-content;
+}
+
+//Type
+
+@font-face {
+    font-family: 'FavoritWeb';
+    src: url('../assets/Favorit-MonoBeta.woff2') format('woff2'),
+        url('../assets/Favorit-MonoBeta.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'FavoritWeb';
+    src: url('../assets/Favorit-Regular.woff2') format('woff2'),
+        url('../assets/Favorit-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'FavoritWeb';
+    src: url('../assets/Favorit-Bold.woff2') format('woff2'),
+        url('../assets/Favorit-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'abc_favoritbook';
+    src: url('../assets/abcfavorit-book-webfont.woff2') format('woff2'),
+         url('../assets/abcfavorit-book-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+h1 {
+  line-height: 1;
+  font-family: 'abc_favoritbook';
+  font-weight: 400;
+  font-size: 48px;
+  margin: 0;
+
+  @include mq($from: tablet) {
+    line-height: 1;
+    letter-spacing: -4.5px;
+    font-size: 90px;
+  }
+}
+
+h2 {
+  line-height: 1.2;
+  font-family: 'FavoritWeb';
+  font-weight: 400;
+  font-size: 32px;
+
+  @include mq($from: tablet) {
+    line-height: 1;
+    font-size: 40px;
+  }
+}
+
+h3 {
+  line-height: 1.2;
+  font-family: 'FavoritWeb';
+  font-weight: 400;
+  font-size: 20px;
+
+  @include mq($from: tablet) {
+    line-height: 1.4;
+    font-size: 24px;
+  }
+}
+
+p {
+  line-height: 1.7;
+  font-family: 'abc_favoritbook';
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.p-large {
+  line-height: 1.4;
+  font-family: 'abc_favoritbook';
+  font-weight: 400;
+  font-size: 32px;
+}
+
+ul {
+  list-style: none;
+  margin: $spacer 0 calc(#{$spacer} * 4);
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+
+  p & {
+    border-bottom: 1px solid lighten($purple, 20%);
+    color: $purple;
+    transition: all ease-in-out 0.3s;
+
+    &:hover {
+      border-bottom: 1px solid $purple;
+    }
+  }
+}
+
+.cta-btn {
+  background-color: lighten($purple, 28);
+  border: 1px solid $purple;
+  border-radius: calc(#{$spacer} / 2);
+  display: inline-block;
+  margin-top: $spacer;
+  padding: calc(#{$spacer}/2) $spacer;
+  transition: all ease-in-out 0.3s;
+
+  &:hover {
+    background-color: $purple;
+
+      a {
+        color: #fff;
+      }
+  }
+  a {
+    border-bottom: 0;
+    transition: all ease-in-out 0.3s;
+
+  &:hover {
+    border-bottom: 0;
+  }
+  }
+}
+
+code {
+  background-color: $greyXlight;
+  border-radius: 4px;
+  font-family: 'FavoritWeb';
+  font-weight: 100;
+  padding: calc(#{$spacer /2}) calc(#{$spacer}) calc(#{$spacer} /2);
+
+  @include mq($until: tablet) {
+      word-break: break-all;
+  }
+}
+
+.secondary {
+  color: $greyDark;
+}
+
+.button {
+  background-color: transparent;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  color: #fff;
+  font-family: 'abc_favoritbook';
+  font-size: 16px;
+  padding: calc(#{$spacer} * 2);
+}
+
+.toast {
+  border: 1px solid $purple;
+  background-color: $purpleLight;
+  border-radius: 4px;
+  color: $purple;
+  font-size: 16px;
+  left: 50%;
+  opacity: 0;
+  position: fixed;
+  padding: calc(#{$spacer} * 2);
+  pointer-events: none;
+  top: 32px;
+  transition: opacity ease-in-out 0.3s;
+  transform: translateX(-50%);
+  z-index: 10000;
+
+  &.copied {
+    opacity: 1;
+  }
+}
+
+.tooltip-hover {
+  position: relative;
+
+  &:after {
+    background-color: $greyXdark;
+    border-radius: 4px;
+    bottom: -30px;
+    content: attr(data-tooltip);
+    color: #fff;
+    display: inline-block;
+    font-size: 12px;
+    left: 50%;
+    padding: $spacer;
+    position: absolute;
+    transform: translateX(-50%);
+    transition: opacity ease-in-out 0.3s;
+    opacity: 0;
+    width: max-content;
+  }
+
+  &.offscreen-right {
+    &:after {
+      transform: unset;
+      left: unset;
+      right: 0;
+    }
+  }
+
+  &:hover {
+    &:after {
+      opacity: 1;
+    }
+  }
+}
+
+.cd__max-width {
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+//Header Styles shared with Docs.cord.com
+header {
+  align-items: center;
+  border-bottom: 1px solid $greyXdark;
+  display: flex;
+  height: 60px;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header--wrapper {
+  padding-left: calc(#{$spacer} * 2);
+}
+
+.header--logo, .footer--logo {
+  display: flex;
+
+  a {
+    align-items: center;
+    display: flex;
+  }
+
+  .layout--api &, .layout--apihome &, .layout--playground & {
+    a {
+      &:nth-child(even) {
+        svg {
+          margin-bottom: 2px;
+        }
+      }
+    }
+  }
+}
+
+.header--nav {
+  height: 100%;
+
+  ul {
+    align-items: center;
+    display: flex;
+    margin: 0;
+    height: 100%;
+
+    li {
+      border-left: 1px solid #000;
+      display: none;
+      font-size: 16px;
+      height: 100%;
+      padding: 0 $spacer;
+      position: relative;
+      width: max-content;
+
+      @include mq($from: tablet) {
+        display: flex;
+      }
+
+      span {
+        align-self: center;
+      }
+
+      &:hover {
+        background-color: #fff;
+      }
+
+      //slightly annoying thing here is that last-child is the nav, so needs to be specific to the amount of items in the nav.
+      &:nth-child(5) {
+        background-color: $green;
+      }
+
+      &.veggie--burger {
+        display: flex;
+
+        @include mq($from: tablet) {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .submenu--item {
+    .header__nav-sub {
+      background-color: #fff;
+      opacity: 0;
+      padding-bottom: $spacer;
+      pointer-events: none;
+    }
+  }
+
+  .header__nav-sub {
+    align-items: flex-start;
+    border-left: 1px solid #000;
+    flex-direction: column;
+    height: auto;
+    left: -1px;
+    padding-top: calc(#{$spacer} * 2);
+    position: absolute;
+    transition: opacity ease-in-out 0.3s;
+    top: 60px;
+
+    &.hovered {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    li {
+      border: none;
+      font-size: 1em;
+      margin-bottom: $spacer;
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+//Footer shared with Docs.Cord.com
+
+footer {
+  background-color: $greyXdark;
+  padding: calc(#{$spacer} * 2) 0;
+
+  @include mq($from: desktop) {
+    padding: 140px calc(#{$spacer} * 2) calc(#{$spacer} * 2);
+  }
+
+  .layout--playground & {
+    background-color: #fff;
+    border-top: 1px solid $greyXlight;
+
+    svg {
+      path {
+        fill: $greyXdark;
+      }
+    }
+
+    .footer--wrapper p {
+      color: $greyXdark;
+    }
+
+    .footer--wrapper ul li {
+      color: $greyDark;
+    }
+  }
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+  @include mq($from: tablet) {
+    flex-direction: row;
+  }
+}
+
+.footer--wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  width: calc(100% - 30px);
+
+  .flex {
+    @include mq($until: tablet) {
+      flex-direction: column-reverse;
+    }
+  }
+
+  p {
+    color: $greyDark;
+    margin-bottom: calc(#{$spacer});
+  }
+
+  ul {
+    li {
+      color: $greylight;
+      font-size: 16px;
+      margin-bottom: calc(#{$spacer}/2);
+    }
+  }
+
+  .footer__col-third {
+    width: 100%;
+
+    @include mq($from: desktop) {
+      width: 33%;
+    }
+  }
+
+  .footer__col-twoThirds {
+    justify-content: space-around;
+    width: 66%;
+  }
+
+  .footer__col-half {
+    width: 50%;
+  }
+
+  .footer__col-quarter {
+    width: max-width;
+  }
+
+  svg {
+    height: auto;
+    width: 100%;
+  }
+}
