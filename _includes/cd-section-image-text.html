@@ -1,4 +1,13 @@
 <section class="cd__image-text flex">
-  <div class="cd__image-left"></div>
-  <div class="cd__text-right"></div>
+  <div class="cd__image-left">
+    <img src="{{include.image}}">
+  </div>
+  <div class="cd__text-right">
+    {% assign titleSplit = include.title | split: '|' %}
+    <h2><span class="drop-medium">{{titleSplit[0]}}</span><span class="drop-medium">{{titleSplit[1]}}</span></h2>
+    <p class="p-medium">{{include.description}}</p>
+    <div class="button">
+      {{include.button}}
+    <div>
+  </div>
 </section>
