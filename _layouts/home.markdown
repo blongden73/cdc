@@ -1,6 +1,7 @@
 ---
 layout: default
 ---
+
 {% assign Section-Image-Text = page.['Section Image Text'] %}
 {% assign sectionImage = Section-Image-Text.[0].Image %}
 {% assign sectionTitle = Section-Image-Text.[0].Title %}
